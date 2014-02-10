@@ -3,7 +3,8 @@
 class Bootstrap {
 
     private $_url = null;
-    private $_controller = null;    
+    private $_controller = null;
+    
     private $_controllerPath = 'controllers/'; // Always include trailing slash
     private $_modelPath = 'models/'; // Always include trailing slash
     private $_errorFile = 'error.php';
@@ -72,8 +73,8 @@ class Bootstrap {
     private function _getUrl()
     {
         $url = isset($_GET['url']) ? $_GET['url'] : null;
-        $url .= rtrim($url, '/');
-        $url .= filter_var($url, FILTER_SANITIZE_URL);
+        $url = rtrim($url, '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
         $this->_url = explode('/', $url);
     }
     
@@ -109,7 +110,7 @@ class Bootstrap {
     /**
      * If a method is passed in the GET url paremter
      * 
-     *  http://site.com/controller/method/(param)/(param)/(param)
+     *  http://localhost/controller/method/(param)/(param)/(param)
      *  url[0] = Controller
      *  url[1] = Method
      *  url[2] = Param
@@ -160,11 +161,11 @@ class Bootstrap {
      * 
      * @return boolean
      */
-    private function _error() 
-    {
+    private function _error() {
         require $this->_controllerPath . $this->_errorFile;
         $this->_controller = new Error();
         $this->_controller->index();
         exit;
     }
+
 }

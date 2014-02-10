@@ -1,7 +1,7 @@
 <?php
 
-class Controller 
-{
+class Controller {
+
     function __construct() {
         //echo 'Main controller<br />';
         $this->view = new View();
@@ -10,7 +10,7 @@ class Controller
     /**
      * 
      * @param string $name Name of the model
-     * @param string $modelPath Location of the models
+     * @param string $path Location of the models
      */
     public function loadModel($name, $modelPath = 'models/') {
         
