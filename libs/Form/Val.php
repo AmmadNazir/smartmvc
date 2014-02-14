@@ -10,7 +10,7 @@ class Val
     public function minlength($data, $arg)
     {
         if (strlen($data) < $arg) {
-            return "Your string can only be $arg long";
+            return "<div class='alert alert-danger'>Your string can only be $arg long</div>";
         }
     }
     

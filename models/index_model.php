@@ -8,7 +8,10 @@ class Index_Model extends Model {
     public function run($data)
     {
         //echo 45;
-        $this->db->insert('test',array('name' => $data['name']));
+        $this->db->insert('test',$data);
+//        echo '-----<pre>';
+//        print_r($data);
+//        echo '</pre>-----';
     }
     public function show()
     {
@@ -19,6 +22,12 @@ class Index_Model extends Model {
     public function userList()
     {
         return $this->db->select('SELECT userid, login, role FROM user');
+    }
+    public function del($id) 
+    {
+      //  echo $id;
+        $stam = $this->db->prepare('DELETE FROM test WHERE id = :id');
+        $stam->execute(array('id'=> $id));
     }
 }
 

@@ -6,7 +6,7 @@ class View {
         //echo 'this is the view';
     }
 
-    public function render($name, $noInclude = false)
+    public function view($name, $noInclude = false)
     {
         require 'views/' . $name . '.php';    
     }

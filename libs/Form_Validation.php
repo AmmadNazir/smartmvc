@@ -1,3 +1,4 @@
+<link href="<?=URL?>assats/css/bootstrap.css" rel="stylesheet">
 <?php
 /**
  *
@@ -9,9 +10,40 @@
  *  - Write to Database
  
  */
+// Val i short form of validator
+class Val 
+{    
+    public function minlength($data, $arg)
+    {
+        if (strlen($data) < $arg) 
+            {
+                return "Your string can only be $arg long";
+            }
+    }
+    
+    public function maxlength($data, $arg)
+    {
+        if (strlen($data) > $arg) 
+            {
+                return "Your string can only be $arg long";
+            }
+    }
+    
+    public function digit($data)
+    {
+        if (ctype_digit($data) == false) 
+            {
+                return "Your string must be a digit";
+            }
+    }
+    
+    public function __call($name, $arguments) 
+    {
+        throw new Exception("$name does not exist inside of: " . __CLASS__);
+    }
+}
 
-require 'Form/Val.php';
-class Form
+class Form_Validation
 {
     
     /** @var array $_currentItem The immediately posted item*/
@@ -26,6 +58,7 @@ class Form
     /** @var array $_error Holds the current forms errors */
     private $_error = array();
     
+   // protected $_POST;
     /**
      * __construct - Instantiates the validator class
      * 
@@ -59,17 +92,19 @@ class Form
     {
         if ($fieldName) 
         {
-            if (isset($this->_postData[$fieldName]))
-            return $this->_postData[$fieldName];
-            
-            else
-            return false;
+            if (isset($this->_postData[$fieldName])) 
+                {
+                return $this->_postData[$fieldName];
+                } 
+            else 
+                {
+                return false;
+                }
         } 
         else 
         {
             return $this->_postData;
         }
-        
     }
     
     /**
@@ -80,14 +115,19 @@ class Form
      */
     public function val($typeOfValidator, $arg = null)
     {
-        if ($arg == null)
-        $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem]);
-        else
-        $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem], $arg);
-        
-        if ($error)
-        $this->_error[$this->_currentItem] = $error;
-        
+        if ($arg == null) 
+            {
+                $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem]);
+            } 
+        else 
+            {
+                $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem], $arg);
+            }
+        if ($error) 
+            {
+                $this->_error[$this->_currentItem] = $error;
+            }
+
         return $this;
     }
     
@@ -107,11 +147,15 @@ class Form
         else 
         {
             $str = '';
-            foreach ($this->_error as $key => $value)
+            // $this->_error as $key => $value
+            foreach ($this->_error as $value)
             {
-                $str .= $key . ' => ' . $value . "\n";
+               // $str .= $key . ' => ' . $value . "\n";
+            // $key;
+                $str .=  "<div class='alert alert-danger'>" . $value . "</div>";
             }
             throw new Exception($str);
+           //  echo '<div class"alert alert-danger">'.$str.'</div>';
         }
     }
 }

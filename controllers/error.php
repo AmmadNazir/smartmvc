@@ -7,7 +7,7 @@ class Error extends Controller{
     }
     function index()
     {
-        $this->view->title = '404';
-        $this->view->render('error/index');
+        $this->load->title = '404';
+        $this->load->view('error/index');
     }
 }

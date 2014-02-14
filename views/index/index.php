@@ -10,19 +10,25 @@
         <input type="submit" class="btn btn-success bmine" value="Insert">
 </form><br/>
 <p>Echo data</p>
-<table>
+<table class="table table-bordered">
+    <thead class="table table-striped">
+        <tr>
+            <td>ID</td>
+            <td>Data</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
 <?php
-    foreach($this->userList as $key => $value) {
-        echo '<tr>';
-        echo '<td>' . $value['userid'] . '</td>';
-        echo '<td>' . $value['login'] . '</td>';
-        echo '<td>' . $value['role'] . '</td>';
-        echo '<td>
-                <a href="'.URL.'user/edit/'.$value['userid'].'">Edit</a> 
-                <a href="'.URL.'user/delete/'.$value['userid'].'">Delete</a></td>';
-        echo '</tr>';
+    foreach($this->show as $key => $value) 
+        {
+        
+        echo '<tbody><tr>';
+        echo '<td>' . $value['id'] . '</td>';
+        echo '<td>' . $value['name'] . '</td>';
+        echo '<td><a href="'.URL.'index/del/'.$value['id'].'">Delete</a></td>';
+        echo '</tr></tbody>';
     }
 ?>
+  
 </table>
-
-    </div>
+ </div>
