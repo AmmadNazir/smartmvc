@@ -5,6 +5,8 @@ class Controller
     function __construct() 
     {
         $this->load = new View();
+//        $this->load = new Uploads();
+//        $this->load = new Form_Validation();
     }
     
     /**

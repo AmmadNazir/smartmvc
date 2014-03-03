@@ -1,7 +1,8 @@
 <?php
 
-class Index_Model extends Model {
-
+class Index_Model extends Model 
+{   
+  //  private $db;
     function __construct() {
         parent::__construct();
     }
@@ -29,11 +30,32 @@ class Index_Model extends Model {
         $stam = $this->db->prepare('DELETE FROM test WHERE id = :id');
         $stam->execute(array('id'=> $id));
     }
+    public function upload($data)
+    {
+        print_r($data['file']);
+        $this->db->insert('file',array(
+            'file' => $data['file']
+        ));
+    }
+    public function imgshow() 
+    {
+        return $this->db->select('SELECT * FROM file');
+    }
+    public function unlink()
+    {
+        return $this->db->select("SELECT * FROM file WHERE id = $id");
+    }
+
+    public function delphoto($id)
+    {
+        $this->db->delete('file', "id = '$id'");
+    }
 }
 
 /*
  * $this->db->insert('note', array(
-            'title' => $data['title'],
+            'title' => $data['title'],            'title' => $data['title'],
+
             'userid' => $_SESSION['userid'],
             'content' => $data['content'],
             'date_added' => date('Y-m-d H:i:s') // use GMT aka UTC 0:00
