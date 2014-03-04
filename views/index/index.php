@@ -17,6 +17,10 @@
 <p>Echo data</p>
 <table class="table table-bordered">
     <thead class="table table-striped">
+<?php foreach($_GET as $key => $value ){
+    echo  $value;
+}
+?>
         <tr>
             <td>ID</td>
             <td>Data</td>
@@ -34,6 +38,5 @@
         echo '</tr></tbody>';
     }
 ?>
-  
 </table>
  </div>

@@ -33,6 +33,7 @@ class Val
     {
         if (ctype_digit($data) == false) 
             {
+                // return header('location:'.URL.'?dig');
                 return "Your string must be a digit";
             }
     }
@@ -152,7 +153,8 @@ class Form_Validation
             {
                // $str .= $key . ' => ' . $value . "\n";
             // $key;
-                $str .=  "<div class='alert alert-danger'>" . $value . "</div>";
+             //   $str .=  "<div class='alert alert-danger'>" . $value . "</div>";
+                header("location:".URL."?error=$value");
             }
             throw new Exception($str);
            //  echo '<div class"alert alert-danger">'.$str.'</div>';

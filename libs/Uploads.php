@@ -75,7 +75,8 @@ class Uploads {
             return true;
         } else {
             $this->SetMessage("Error: The extension '$Extension' is invalid.");
-            return false;  
+         //   return false;  
+            header("location:".URL."photo?ext");
         }
 
     }
