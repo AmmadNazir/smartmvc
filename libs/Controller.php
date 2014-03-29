@@ -1,30 +1,26 @@
 <?php
-
-class Controller 
+/**
+ * Class Cotroller Just Controller you r Controller Pgaes Its Also Attacged to Model If you are using database
+ * or some thingto get or insert What Ever You Like.....
+ * extends Controlller
+ */
+class Controller
 {
-    function __construct() 
+    public function __construct() 
     {
-        $this->load = new View();
-//        $this->load = new Uploads();
-//        $this->load = new Form_Validation();
+        $this->page = new View();
     }
-    
-    /**
-     * 
-     * @param string $name Name of the model
-     * @param string $modelPath Location of the models
-     */
-    public function useModel($name, $modelPath = 'models/') {
+    public function useModel($name)
+    {
+        $fileName = 'models/'.$name.'_model.php';
         
-        $path = $modelPath . $name.'_model.php';
-        
-        if (file_exists($path)) 
-            {
-                require $modelPath .$name.'_model.php';
-
-                $modelName = $name . '_Model';
-                $this->model = new $modelName();
-            }        
+        if(file_exists($fileName))
+        {
+            require 'models/'.$name.'_model.php';
+            
+            $ModelName = $name.'_Model';
+            $this->model = new $ModelName();
+          //  return FALSE;
+        }
     }
-
 }

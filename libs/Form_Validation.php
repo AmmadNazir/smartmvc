@@ -1,4 +1,3 @@
-<link href="<?=URL?>assats/css/bootstrap.css" rel="stylesheet">
 <?php
 /**
  *
@@ -77,11 +76,11 @@ class Form_Validation
     public function post($field)
     {
         $this->_postData[$field] = $_POST[$field];
+        
         $this->_currentItem = $field;
         
         return $this;
     }
-    
     /**
      * fetch - Return the posted data
      * 
@@ -151,10 +150,10 @@ class Form_Validation
             // $this->_error as $key => $value
             foreach ($this->_error as $value)
             {
-               // $str .= $key . ' => ' . $value . "\n";
+                $str .= $key . ' => ' . $value . "\n";
             // $key;
-             //   $str .=  "<div class='alert alert-danger'>" . $value . "</div>";
-                header("location:".URL."?error=$value");
+                $str .=  "<div class='alert alert-danger'>" . $value . "</div>";
+             //   header("location:".URL."?error=$value");
             }
             throw new Exception($str);
            //  echo '<div class"alert alert-danger">'.$str.'</div>';

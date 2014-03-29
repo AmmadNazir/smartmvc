@@ -1,14 +1,13 @@
 <?php
-
 class Bootstrap {
 
     private $_url = null;
     private $_controller = null;
     
-    private $_controllerPath = 'controllers/'; // Always include trailing slash
-    private $_modelPath = 'models/'; // Always include trailing slash
-    private $_errorFile = 'error.php';
-    private $_defaultFile = 'index.php';
+    private $_controllerPath = 'controllers/'; // Always include trailing slash //
+    private $_modelPath = 'models/'; // Always include trailing slash //
+    private $_errorFile = 'error.php'; // the error file
+    private $_defaultFile = 'index.php'; // by deafult file
     
     /**
      * Starts the Bootstrap
@@ -22,11 +21,11 @@ class Bootstrap {
 
         // Load the default controller if no URL is set
         // eg: Visit http://localhost it loads Default Controller
-        if (empty($this->_url[0])) {
+        if (empty($this->_url[0])) 
+        {
             $this->_loadDefaultController();
             return false;
         }
-
         $this->_loadExistingController();
         $this->_callControllerMethod();
     }
@@ -120,16 +119,18 @@ class Bootstrap {
     private function _callControllerMethod()
     {
         $length = count($this->_url);
-        
         // Make sure the method we are calling exists
-        if ($length > 1) {
-            if (!method_exists($this->_controller, $this->_url[1])) {
+        if ($length > 1) 
+        {
+            if (!method_exists($this->_controller, $this->_url[1])) 
+            {
                 $this->_error();
             }
         }
-        
+
         // Determine what to load
-        switch ($length) {
+        switch ($length) 
+        {
             case 5:
                 //Controller->Method(Param1, Param2, Param3)
                 $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
@@ -161,11 +162,11 @@ class Bootstrap {
      * 
      * @return boolean
      */
-    private function _error() {
+    private function _error() 
+    {
         require $this->_controllerPath . $this->_errorFile;
         $this->_controller = new Error();
         $this->_controller->index();
         exit;
     }
-
 }

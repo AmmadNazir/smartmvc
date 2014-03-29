@@ -2,7 +2,9 @@
 
 class Session
 {
-    
+    /*
+     * Session for whole Web
+     */
     public static function init()
     {
         @session_start();
