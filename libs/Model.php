@@ -1,11 +1,10 @@
 <?php
-/*
- * Class Model Just Connected Too The DataBase
- */
-class Model
-{
-    public function __construct() 
+
+class Model 
+{   
+    function __construct() 
     {
-        $this->db = new Database();
-    }
+        $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+      //  $this->load = new Uploads();
+    }    
 }

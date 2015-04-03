@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404</title>
-  <link href="assats/css/layout.css" rel="stylesheet"/>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <title><?= (isset($this->title)) ? $this->title : Company; ?></title>
+  <link href="<?=URL?>assats/css/layout.css" rel="stylesheet"/>
+  <link href="<?=URL?>assats/css/bootstrap.css" rel="stylesheet"/>
   <!--[if lt IE 9]>
   <script src="assats/js/html5shiv.js"></script><![endif]-->
   <script src="<?=URL?>assats/js/jQuery.js"></script>

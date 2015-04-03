@@ -1,9 +1,5 @@
 <?php
-/*
- * Uplad class to upload files
- */
-class Uploads 
-{  
+class Uploads {  
     /**
      *@var string contains the name of the file to be uploaded.
      */
