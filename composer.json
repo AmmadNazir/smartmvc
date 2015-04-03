@@ -1,0 +1,13 @@
+{
+    "name": "mato/mvc",
+    "description": "simple and easy php framework for fun...",
+    "license": "open-source",
+    "authors": [
+        {
+            "name": "Ammad Nazir",
+            "email": "mato.amd@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
