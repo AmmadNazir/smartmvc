@@ -1,13 +1,13 @@
 {
-	"name": "mato/mvc",
-	"description": "simple and easy php framework.",
-	"keywords": ["framework", "mato"],
-	"license": "open-source",
-	"require": {
-		"mato/mvc": "1.0.*"
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-	"minimum-stability": "stable"
+    "name": "mato/mato",
+    "description": "Simple and Easy Framework...",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ammad Nazir",
+            "email": "mato.amd@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
