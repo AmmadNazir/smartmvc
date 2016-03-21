@@ -15,7 +15,6 @@
         <div class="area">
             <h2>Welcome & Its Working</h2>
             <p>Its a Very Simple & Easy to underStand Framework</p>
-            <p><a href="guide_line/" target="_blank">Guide Line</a></p>
         </div>
     </body>
 </html>
